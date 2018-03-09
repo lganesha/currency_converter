@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>&copy; adhitya yosua sanjaya</title>
+    <link href="bootstrap/bootstrap.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+    <script src="bootstrap/bootstrap.js"></script>
+    <style type="text/css">
+        .panel-header { margin-top: 10%; }
+    </style>
+</head>
+<body>
+    <div id="app" class="app-container">
+        <div v-bind="{class:'container', style:'text-align:center'}">
+            <form v-bind="{id:'form-save', action:'#', class:'form-horizontal', method:'post'}" >
+                <div :class="'panel-default'" >
+                    <div :class="'panel-header'">
+                        {{ base_country_name }}
+                        <h3>Ontype Currency Converter <small>&copy; adhitya yosua sanjaya</small></h3>
+                    </div>
+                    <div :class="'panel-body'">
+                        <div :class="'form-group'">
+                            <label v-bind="{class:'control-label col-sm-3', for:'idr'}" >({{ base }}) : </label>
+                            <div :class="'col-sm-6'">
+                                <div :class="'input-group'">
+                                    <span :class="'input-group-addon'">Rp.</span>
+                                    <input v-bind="{id:'input_base', type:'text', name:'input_base', class:'form-control', placeholder:'type rupiah value here...'}" />
+                                </div><br>     
+                                <span v-bind="{id:'errmsg', class:'btn btn-danger', style:'display:none;'}" ></span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default btn-choose" data-toggle="modal" data-target="#select_curr_modal">Choose Other Currency To Show Converted Value</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div v-bind="{id:'select_curr_modal', class:'modal fade-bs-example-modal-md', tabindex:'-1', role:'dialog'}" aria-labelledby="currency_modal_selector">
+            <div class="col-sm-6" style="background-color:red;"></div>
+            <div v-bind="{class:'modal-dialog modal-md', role:'document', style:'height:300px;'}" >
+                <div v-bind="{class:'modal-header', style:'background:white;, font-size: 12pt;'}" >
+                    Select Currency.
+                    <span :class="'close closespan'">&times;</span>
+                </div>
+                <div v-bind="{class:'modal-body', style:'background: white;'}">
+                    <div class="row" v-for="(currency, index) in currencies">
+                        <div v-if="index < 16" >
+                            <div class="col-sm-6">
+                                <label><input v-bind="{type: 'checkbox', value:currency.abre}"> {{ currency.abbre }} : {{ currency.explain }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div :class="'modal-footer closespan'">
+                    <button v-bind="{id:'select_save', type:'button', class:'btn btn-default'}" >Done !</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
