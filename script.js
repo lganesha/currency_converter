@@ -3,6 +3,7 @@
         // set time out 2 seconds for php server engine checking internet connection
         setTimeout(() => {
             kurs = '<?php echo $currencies_base_idr; ?>'; // echo  php variable and re-assign as js var (kurs)
+            console.log(kurs);
         }, 2000);
 
         // error input value 
@@ -20,7 +21,6 @@
                 $('#select_curr_modal').modal('hide');
             });
         });
-        console.log('asdasd');
 
         // new Vue Object
         var vo = new Vue({
